@@ -1,7 +1,7 @@
 from imports import *
 
 def tweet_clean(text, combined_pat, negations_dic,neg_pattern):
-    clean1 = BeautifulSoup(text, 'lxml')
+    clean1 = BeautifulSoup(text, 'html.parser')
     clean2 = clean1.get_text()
     clean2.replace("ï¿½", "?")
     clean3 = re.sub(combined_pat, '', clean2)
