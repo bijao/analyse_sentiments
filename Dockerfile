@@ -8,6 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Installez les dépendances
+RUN apt-get update && apt-get install -y default-mysql-client && rm -rf /var/lib/apt/lists/*
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Exposez le port nécessaire pour accéder à votre application web
@@ -15,4 +16,3 @@ EXPOSE 8888
 
 # Lancez le notebook Jupyter lors du démarrage du conteneur
 CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "Sentiment_Analysis_notebook.ipynb"]
-
